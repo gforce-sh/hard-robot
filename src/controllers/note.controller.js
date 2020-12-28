@@ -1,4 +1,4 @@
-const NoteModel = require("../models/note.model");
+import NoteModel from "../models/note.model";
 
 const getNote = async (req, res, next) => {
 	try {
@@ -10,4 +10,4 @@ const getNote = async (req, res, next) => {
 	}
 };
 
-module.exports = { getNote };
+export const { getNote };

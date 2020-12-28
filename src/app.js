@@ -1,11 +1,11 @@
-require("./utils/db");
+import "./utils/db";
 
-const express = require("express");
-const morgan = require("morgan");
+import express from "express";
+import morgan from "morgan";
+import noteRouter from "./routes/note.route";
+import cors from "cors";
+
 const app = express();
-const noteRouter = require("./routes/note.route");
-const cors = require("cors");
-
 const corsOptions = {
 	origin: ["http://localhost:5000"],
 	preflightContinue: false,
@@ -32,4 +32,4 @@ app.use((err, req, res, next) => {
 	res.status(err.statusCode).send(err.message);
 });
 
-module.exports = app;
+export default app;

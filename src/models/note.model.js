@@ -1,14 +1,14 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const noteSchema = new mongoose.Schema(
 	{
 		name: { type: String, default: "Note-1" },
 		text: { type: String },
-		userId: { type: String, required: true },
+		// userId: { type: String, required: true },
 	},
 	{ timestamps: true }
 );
 
-const NoteModel = mongoose.model("note", noteSchema);
+const NoteModel = mongoose.model("Note", noteSchema);
 
-module.exports = NoteModel;
+export default NoteModel;

@@ -1,7 +1,8 @@
-const express = require("express");
+import express from "express";
+import * as Ctrl from "../controllers/note.controller";
+
 const router = express.Router();
-const Ctrl = require("../controllers/note.controller");
 
 router.get("/", Ctrl.getNote);
 
-module.exports = router;
+export default router;

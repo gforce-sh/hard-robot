@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const dbURI =
 	process.env.MONGODB_URI ||
 	global.__MONGO_URI__ ||
-	"mongodb://localhost:27017/testDb";
+	"mongodb://localhost:27017/fluffyDb";
 
 mongoose.connect(dbURI, {
 	useNewUrlParser: true,
@@ -13,9 +13,9 @@ mongoose.connect(dbURI, {
 
 const db = mongoose.connection;
 
-if (process.env.NODE_ENV === "development") {
-	db.dropDatabase();
-}
+// if (process.env.NODE_ENV === "development") {
+// 	db.dropDatabase();
+// }
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
 	console.log("connected to mongodb");

@@ -1,0 +1,45 @@
+{
+	"name": "hard-robot",
+	"version": "0.0.1",
+	"description": "Gaurav Sharma's personal server",
+	"main": "index.js",
+	"scripts": {
+		"start": "node --exec babel-node ./src/server.js",
+		"start:dev": "nodemon --exec babel-node ./src/server.js",
+		"start:drop": "cross-env NODE_ENV=development node ./src/server.js",
+		"start:db": "mongod --dbpath ~/data/db",
+		"test": "jest --runInBand __test__",
+		"test:watch": "jest --runInBand --watch __test__",
+		"test:coverage": "jest --runInBand --coverage __test__"
+	},
+	"jest": {
+		"preset": "@shelf/jest-mongodb"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/armadillo-apps/legs.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/armadillo-apps/legs/issues"
+	},
+	"homepage": "https://github.com/armadillo-apps/legs#readme",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"mongoose": "^5.6.4",
+		"morgan": "^1.9.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.12.10",
+		"@babel/node": "^7.12.10",
+		"@babel/preset-env": "^7.12.11",
+		"@shelf/jest-mongodb": "^1.1.0",
+		"cross-env": "^5.2.0",
+		"jest": "^24.8.0",
+		"nodemon": "^1.19.1",
+		"supertest": "^4.0.2"
+	}
+}

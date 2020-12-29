@@ -2,10 +2,9 @@ import NoteModel from "../models/note.model";
 
 export const getNote = async (req, res, next) => {
 	try {
-		const { noteId } = req.params;
-		const foundNote = await NoteModel.find({ _id: noteId });
-		if (!foundNote) throw new Error("no note found for given id");
-		return res.status(200).send(foundNote);
+		const foundNote = await NoteModel.find();
+		if (!foundNote?.length) throw new Error("no note found for given id");
+		return res.status(200).send(foundNote[0]);
 	} catch (err) {
 		const error = new Error(`Unable to fetch note: (${err.message})`);
 		error.statusCode = err.statusCode || 400;
@@ -32,6 +31,9 @@ export const updateNote = async (req, res, next) => {
 		const { noteId } = req.params;
 		if (!noteId) throw new Error("missing note id");
 		const { text } = req.body;
+		const foundNote = await NoteModel.findById(noteId).lean();
+		if (!foundNote) throw new Error("No note found for given id");
+		if (foundNote.text === text) return res.status(200).send(foundNote);
 		const updatedNote = await NoteModel.findByIdAndUpdate(
 			noteId,
 			{ text },

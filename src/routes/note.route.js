@@ -3,7 +3,7 @@ import * as Ctrl from "../controllers/note.controller";
 
 const router = express.Router();
 
-router.get("/:noteId", Ctrl.getNote);
+router.get("/", Ctrl.getNote);
 router.post("/", Ctrl.createNote);
 router.post("/update/:noteId", Ctrl.updateNote);
 
